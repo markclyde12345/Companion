@@ -22,10 +22,10 @@ jobs:
         run: dotnet workload install maui
 
       - name: Restore
-        run: dotnet restore project.sln
+        run: dotnet restore project/project.csproj
 
       - name: Publish APK
-        run: dotnet publish project.sln -f net8.0-android -c Release
+        run: dotnet publish project/project.csproj -f net8.0-android -c Release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
