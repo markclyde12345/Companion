@@ -7,25 +7,25 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      - name: Install MAUI
-        run: dotnet workload install maui
+      - name: Install MAUI Workload
+        run: dotnet workload install maui-android
 
-      - name: Restore
-        run: dotnet restore project/project.csproj
+      - name: Restore Dependencies
+        run: dotnet restore ./project/project.csproj
 
-      - name: Publish APK
-        run: dotnet publish project/project.csproj -f net8.0-android -c Release
+      - name: Build APK
+        run: dotnet publish ./project/project.csproj -f net8.0-android -c Release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
