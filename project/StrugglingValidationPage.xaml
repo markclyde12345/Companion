@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.StrugglingValidationPage"
+             BackgroundColor="#F5FAF5">
+
+	<Grid RowDefinitions="Auto,*,Auto">
+
+		<!-- HEADER -->
+		<VerticalStackLayout Padding="24,20,24,16" BackgroundColor="#F5FAF5" Spacing="8">
+
+			<Label Text="Mood Reflection"
+                   TextColor="#1A1A1A"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+			<ProgressBar x:Name="ProgressBar"
+                         Progress="0.7"
+                         HeightRequest="8"
+                         BackgroundColor="#C2DFC2"
+                         ProgressColor="#3A8A3A"
+                         Margin="0,4,0,0"/>
+
+			<Label Text="Final Step — You're not alone"
+                   TextColor="#888888"
+                   FontSize="13"
+                   HorizontalOptions="Center"/>
+
+		</VerticalStackLayout>
+
+		<!-- CONTENT -->
+		<ScrollView Grid.Row="1">
+			<VerticalStackLayout Padding="24,8,24,24" Spacing="20">
+
+				<!-- Mood Icon -->
+				<VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+
+					<Frame x:Name="MoodCircle"
+                           BackgroundColor="#FFE5D6"
+                           CornerRadius="45"
+                           WidthRequest="90"
+                           HeightRequest="90"
+                           Padding="0"
+                           HorizontalOptions="Center"
+                           HasShadow="False">
+						<Label x:Name="MoodEmoji"
+                               Text="😟"
+                               FontSize="38"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+					</Frame>
+
+					<Label x:Name="MoodTitle"
+                           Text="You're Feeling Low"
+                           FontAttributes="Bold"
+                           TextColor="#1A1A1A"
+                           FontSize="24"
+                           HorizontalOptions="Center"/>
+
+					<Label Text="It's brave to acknowledge when you're struggling."
+                           TextColor="#666666"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+
+				</VerticalStackLayout>
+
+				<!-- Gentle Warning Card -->
+				<Frame CornerRadius="14"
+                       BackgroundColor="#FFF0EE"
+                       BorderColor="#FFCDC7"
+                       HasShadow="False"
+                       Padding="16,14">
+					<HorizontalStackLayout Spacing="12">
+						<Label Text="💛" FontSize="22" VerticalOptions="Start" Margin="0,2,0,0"/>
+						<Label VerticalOptions="Center">
+							<Label.FormattedText>
+								<FormattedString>
+									<Span Text="Gentle Reminder: "
+                                          FontAttributes="Bold"
+                                          TextColor="#1A1A1A"
+                                          FontSize="14"/>
+									<Span Text="If you've been feeling this way for more than 2 weeks, consider talking to a mental health professional."
+                                          TextColor="#555555"
+                                          FontSize="14"/>
+								</FormattedString>
+							</Label.FormattedText>
+						</Label>
+					</HorizontalStackLayout>
+				</Frame>
+
+				<!-- Crisis Hotline Card -->
+				<Frame CornerRadius="14"
+                       BackgroundColor="#EAF5EA"
+                       BorderColor="#C2DFC2"
+                       HasShadow="False"
+                       Padding="16,14">
+					<HorizontalStackLayout Spacing="12">
+						<Label Text="📞" FontSize="22" VerticalOptions="Start" Margin="0,2,0,0"/>
+						<VerticalStackLayout VerticalOptions="Center">
+							<Label Text="Need immediate help?"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   FontSize="14"/>
+							<Label Text="In Touch with Joshua Mark Enacbo"
+                                   TextColor="#3A8A3A"
+                                   FontSize="13"/>
+							<Label Text="In Touch with Mark Clyde Castillote"
+                                   TextColor="#3A8A3A"
+                                   FontSize="13"/>
+						</VerticalStackLayout>
+					</HorizontalStackLayout>
+				</Frame>
+
+				<!-- Small Help Entry -->
+				<Label Text="WHAT SMALL THING MIGHT HELP YOU FEEL BETTER?"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"
+                       Margin="0,4,0,0"/>
+
+				<Frame CornerRadius="12"
+                       BackgroundColor="#EAF5EA"
+                       BorderColor="#C2DFC2"
+                       HasShadow="False"
+                       Padding="12,0"
+                       HeightRequest="54">
+					<Entry x:Name="SmallHelpEntry"
+                           Placeholder="e.g. Reach out to someone I trust..."
+                           PlaceholderColor="#AAAAAA"
+                           TextColor="#1A1A1A"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+				</Frame>
+
+				<!-- Important Editor -->
+				<Label Text="WHAT FEELS MOST IMPORTANT RIGHT NOW?"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"
+                       Margin="0,4,0,0"/>
+
+				<Frame CornerRadius="12"
+                       BackgroundColor="#EAF5EA"
+                       BorderColor="#C2DFC2"
+                       HasShadow="False"
+                       Padding="12,10">
+					<Editor x:Name="ImportantEditor"
+                            Placeholder="The first person who understands me..."
+                            PlaceholderColor="#AAAAAA"
+                            TextColor="#1A1A1A"
+                            HeightRequest="110"
+                            BackgroundColor="Transparent"/>
+				</Frame>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<!-- BOTTOM BUTTON -->
+		<VerticalStackLayout Grid.Row="2"
+                             Padding="24,12,24,32"
+                             BackgroundColor="#F5FAF5">
+			<Button Text="Submit Reflection 💚"
+                    Clicked="OnSubmitReflectionClicked"
+                    BackgroundColor="#3A8A3A"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"/>
+		</VerticalStackLayout>
+
+	</Grid>
+</ContentPage>

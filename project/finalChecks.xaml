@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.finalChecks"
+             BackgroundColor="#F5FAF5">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <Grid Padding="24,20,24,16" ColumnDefinitions="Auto,*">
+            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="2">
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="0">
+                    <Label Text="COM" TextColor="#1A1A1A" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="PANION" TextColor="#1560BD" FontSize="18" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+                <Label Text="Final Reflection"
+                       TextColor="#888888"
+                       FontSize="12"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="24,10,24,24" Spacing="20">
+
+                <!-- Progress Bar -->
+                <ProgressBar Progress="1.0"
+                             HeightRequest="8"
+                             BackgroundColor="#d8f9ff"
+                             ProgressColor="#1560BD"/>
+                <Label Text="Final Step — Reflect on your day"
+                       HorizontalOptions="Center"
+                       TextColor="#888888"
+                       FontSize="13"/>
+
+                <!-- Check Icon -->
+                <Frame x:Name="IconCircle"
+                       BackgroundColor="#3A8A3A"
+                       CornerRadius="45"
+                       WidthRequest="90"
+                       HeightRequest="90"
+                       Padding="0"
+                       HorizontalOptions="Center"
+                       HasShadow="False">
+                    <Label x:Name="MoodEmoji"
+                           Text="✓"
+                           FontSize="38"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Title -->
+                <Label x:Name="TitleLabel"
+                       Text="Great work!"
+                       TextColor="#1A1A1A"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+
+                <!-- Subtitle -->
+                <Label x:Name="SubtitleLabel"
+                       Text="You've completed your mood validation activity."
+                       TextColor="#666666"
+                       FontSize="14"
+                       HorizontalTextAlignment="Center"/>
+
+                <!-- Mood Insight Card -->
+                <Frame x:Name="InsightCard"
+                       CornerRadius="14"
+                        BackgroundColor="#d8f9ff"
+ BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="16,14">
+                    <VerticalStackLayout Spacing="6">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label x:Name="InsightIcon" FontSize="18"/>
+                            <Label x:Name="InsightTitle"
+                                   Text="You did something meaningful today."
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <Label x:Name="InsightMessage"
+                               Text="Taking time to check in with yourself is an act of self-care."
+                               TextColor="#555555"
+                               FontSize="13"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Final Thought Box -->
+                <Frame CornerRadius="14"
+                       BackgroundColor="White"
+                       BorderColor="#C2DFC2"
+                       HasShadow="False"
+                       Padding="16">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Any final thought or reflection? (Optional)"
+                               TextColor="#1A1A1A"
+                               FontAttributes="Bold"
+                               FontSize="14"/>
+                        <Editor x:Name="FinalThoughtEditor"
+                                HeightRequest="110"
+                                Placeholder="Additional reflection about how you're feeling..."
+                                PlaceholderColor="#AAAAAA"
+                                TextColor="#1A1A1A"
+                                BackgroundColor="Transparent"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- BOTTOM BUTTON -->
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="24,12,24,36"
+                             BackgroundColor="#F5FAF5">
+            <Button x:Name="CompleteButton"
+                    Text="Complete Check-In"
+                    Clicked="OnCompleteClicked"
+                    BackgroundColor="#1560BD"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"/>
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

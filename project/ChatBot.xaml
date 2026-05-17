@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.ChatBot"
+             Title="Dr. Aria"
+             BackgroundColor="#FAF8F4"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="60,*,70">
+
+        <!-- Header -->
+        <Grid BackgroundColor="#4A7C6F"
+              Padding="15,0"
+              ColumnDefinitions="Auto,*,Auto">
+
+            <Label Text="🤖"
+                   FontSize="22"
+                   VerticalOptions="Center"/>
+
+            <Label Grid.Column="1"
+                   Text="Dr. Aria"
+                   FontSize="18"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+
+            <Label Grid.Column="2"
+                   Text="✕"
+                   FontSize="22"
+                   TextColor="White"
+                   VerticalOptions="Center">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+
+        <!-- Messages -->
+        <CollectionView Grid.Row="1"
+                        x:Name="MessagesView"
+                        Margin="10"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="12"
+                           Margin="5"
+                           CornerRadius="18"
+                           HasShadow="False"
+                           BackgroundColor="{Binding BubbleColor}"
+                           HorizontalOptions="{Binding Align}">
+
+                        <Label Text="{Binding Text}"
+                               TextColor="Black"
+                               FontSize="14"/>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <!-- Input -->
+        <Grid Grid.Row="2"
+              Padding="10"
+              ColumnDefinitions="*,Auto">
+
+            <Entry x:Name="MessageEntry"
+                   Placeholder="Type your thoughts..."
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   HeightRequest="50"/>
+
+            <Button Grid.Column="1"
+                    Text="Send"
+                    Margin="10,0,0,0"
+                    BackgroundColor="#4A7C6F"
+                    TextColor="White"
+                    Clicked="OnSendClicked"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

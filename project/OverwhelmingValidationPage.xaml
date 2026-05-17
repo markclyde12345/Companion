@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.OverwhelmingValidationPage"
+             BackgroundColor="#F5FAF5">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="24,20,24,40" Spacing="0" BackgroundColor="#F5FAF5">
+
+			<!-- Header Row -->
+			<Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="0">
+					<Label Text="Mind" TextColor="#1A1A1A" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+					<Label Text="Bloom" TextColor="#3A8A3A" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+				</HorizontalStackLayout>
+			</Grid>
+
+			<!-- Progress Bar -->
+			<ProgressBar x:Name="ProgressBar"
+                         Progress="0.7"
+                         HeightRequest="8"
+                         BackgroundColor="#C2DFC2"
+                         ProgressColor="#3A8A3A"
+                         Margin="0,0,0,6"/>
+			<Label Text="Activity Check-In"
+                   HorizontalOptions="Center"
+                   TextColor="#888888"
+                   FontSize="13"
+                   Margin="0,0,0,24"/>
+
+			<!-- Mood Icon -->
+			<Frame BackgroundColor="#D6DCF5"
+                   CornerRadius="45"
+                   WidthRequest="90"
+                   HeightRequest="90"
+                   Padding="0"
+                   HorizontalOptions="Center"
+                   HasShadow="False"
+                   Margin="0,0,0,12">
+				<Label x:Name="MoodEmoji"
+                       Text="😞"
+                       FontSize="38"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- Mood Title -->
+			<Label x:Name="MoodTitle"
+                   Text="You're Feeling Overwhelmed"
+                   TextColor="#1A1A1A"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,8"/>
+
+			<Label Text="It's okay to feel this way. You don't have to carry everything alone. Let's take this one small step at a time."
+                   FontSize="14"
+                   TextColor="#666666"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,24"/>
+
+			<!-- Crisis-aware Tip Card -->
+			<Frame CornerRadius="14"
+                   BackgroundColor="#D6DCF5"
+                   BorderColor="#A8B0E8"
+                   HasShadow="False"
+                   Padding="16,14"
+                   Margin="0,0,0,24">
+				<HorizontalStackLayout Spacing="12">
+					<Label FontSize="22" VerticalOptions="Start" Margin="0,2,0,0"/>
+					<Label VerticalOptions="Center" LineBreakMode="WordWrap" MaximumWidthRequest="250">
+						<Label.FormattedText>
+							<FormattedString>
+								<Span Text="You Are Not Alone: "
+                                      FontAttributes="Bold"
+                                      TextColor="#1A1A1A"
+                                      FontSize="14"/>
+								<Span Text="When things feel too heavy, reaching out to someone you trust is a sign of strength."
+                                      TextColor="#555555"
+                                      FontSize="14"/>
+							</FormattedString>
+						</Label.FormattedText>
+					</Label>
+				</HorizontalStackLayout>
+			</Frame>
+
+			<!-- Gentle reminder -->
+			<Frame CornerRadius="12"
+                   BackgroundColor="#FFF3CD"
+                   BorderColor="#F0D080"
+                   HasShadow="False"
+                   Padding="14,12"
+                   Margin="0,0,0,20">
+				<HorizontalStackLayout Spacing="10">
+					<Label FontSize="18" VerticalOptions="Center"/>
+                    <Label Text="If you feel like you can't cope, please talk to someone you trust or contact a mental health helpline." LineBreakMode="WordWrap"
+                           FontSize="13"
+                           MaximumWidthRequest="250"
+                           TextColor="#7A5C00"
+                           VerticalOptions="Center"/>
+				</HorizontalStackLayout>
+			</Frame>
+
+			<!-- Instruction -->
+			<Label Text="When you are ready, gently reflect on the following:"
+                   TextColor="#444444"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,16"/>
+
+			<!-- WHAT FEELS MOST OVERWHELMING RIGHT NOW -->
+			<Label Text="WHAT FEELS MOST OVERWHELMING RIGHT NOW?"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#EAF5EA"
+                   BorderColor="#C2DFC2"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,16">
+				<Entry x:Name="OverwhelmEntry"
+                       Placeholder="e.g. everything, my thoughts, life..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- IS THERE SOMEONE YOU CAN REACH OUT TO -->
+			<Label Text="IS THERE SOMEONE YOU CAN REACH OUT TO?"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#EAF5EA"
+                   BorderColor="#C2DFC2"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,16">
+				<Entry x:Name="SupportEntry"
+                       Placeholder="e.g. a friend, family member, counselor..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- ONE TINY STEP YOU CAN TAKE RIGHT NOW -->
+			<Label Text="ONE TINY STEP YOU CAN TAKE RIGHT NOW"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#EAF5EA"
+                   BorderColor="#C2DFC2"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,28">
+				<Entry x:Name="StepEntry"
+                       Placeholder="e.g. breathe, sit down, drink water..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- Submit Button -->
+			<Button Text="Submit Activity"
+                    Clicked="OnSubmitActivityClicked"
+                    BackgroundColor="#3A8A3A"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

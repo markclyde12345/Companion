@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.MainPage"
+             BackgroundColor="#F5FAF5">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,40"
+                             Spacing="0"
+                             BackgroundColor="#F5FAF5">
+
+            <!-- App Name -->
+            <HorizontalStackLayout HorizontalOptions="Center"  Margin="0,0,0,4">
+                <Image Source="logo3.png"
+                       HeightRequest="50"
+                       WidthRequest=" 50"/>
+
+
+                <Label Text="COM"
+                       FontAttributes="Bold"
+                       TextColor="#1A1A1A"
+                       FontSize="25"
+                       VerticalOptions="Center"/>
+                <Label Text="PANION"
+                       TextColor="#1560BD"
+                       FontSize="25"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Subtitle -->
+            <Label Text="Mental Wellness Monitoring"
+                   TextColor="#888888"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,24"/>
+
+            <!-- Daily Tip Card -->
+            <Frame CornerRadius="14"
+                   BackgroundColor="#E5F5F8"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="16,14"
+                   Margin="0,0,0,28">
+                
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Label FontSize="22"
+                           VerticalOptions="Start"
+                           Margin="0,2,0,0"/>
+                    <Label VerticalOptions="Center" LineBreakMode="WordWrap" MaximumWidthRequest="280">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Daily Tip: "
+                                      FontAttributes="Bold"
+                                      TextColor="#1A1A1A"
+                                      FontSize="14"/>
+                                <Span Text="Logging your mood for just 2 minutes a day can improve self-awareness over time."
+                                      TextColor="#444444"
+                                      FontSize="14"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Sign In Heading -->
+            <Label Text="Sign In"
+                   TextColor="#1A1A1A"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,4"/>
+
+            <Label Text="Welcome back. Continue where you left off."
+                   TextColor="#888888"
+                   FontSize="14"
+                   Margin="0,0,0,22"/>
+
+            <!-- EMAIL Label -->
+            <Label Text="EMAIL"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+
+            <!-- Email Entry -->
+            <Frame CornerRadius="12"
+                   BackgroundColor="#E5F5F8"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,16">
+                <Entry x:Name="UsernameEntry"
+                       Placeholder="your@email.com"
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"
+                       Keyboard="Email"/>
+            </Frame>
+
+            <!-- PASSWORD Label -->
+            <Label Text="PASSWORD"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+
+            <!-- Password Entry -->
+            <Frame CornerRadius="12"
+                   BackgroundColor="#E5F5F8"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,14">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="PasswordEntry"
+                           Grid.Column="0"
+                           Placeholder="Enter password"
+                           PlaceholderColor="#AAAAAA"
+                           TextColor="#1A1A1A"
+                           IsPassword="True"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+                    <Label Grid.Column="1"
+                           Text="👁"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           Margin="0,0,4,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnShowPasswordTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Frame>
+
+            <!-- Remember Me + Forgot Password Row -->
+            <Grid Margin="0,0,0,22">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <HorizontalStackLayout Grid.Column="0" Spacing="6" VerticalOptions="Center">
+                    <CheckBox x:Name="RememberMe" Color="#1560BD"/>
+                    <Label Text="Remember me"
+                           TextColor="#444444"
+                           FontSize="14"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <Label Grid.Column="1"
+                       Text="Forgot password?"
+                       TextColor="#1560BD"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnForgotPasswordTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <!-- Sign In Button -->
+            <Button Text="Sign In"
+                    Clicked="OnLoginClicked"
+                    BackgroundColor="#1560BD"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    Margin="0,0,0,20"/>
+
+            <!-- Error Message -->
+            <Label x:Name="MessageLabel"
+                   TextColor="#EF4444"
+                   HorizontalOptions="Center"
+                   FontSize="14"
+                   Margin="0,0,0,10"/>
+
+            <!-- Divider: or continue with -->
+            <Grid Margin="0,0,0,18">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <BoxView Grid.Column="0"
+                         BackgroundColor="#1560BD"
+                         HeightRequest="1"
+                         VerticalOptions="Center"/>
+                <Label Grid.Column="1"
+                       Text="  or continue with  "
+                       TextColor="#AAAAAA"
+                       FontSize="13"
+                       VerticalOptions="Center"/>
+                <BoxView Grid.Column="2"
+                         BackgroundColor="#1560BD"
+                         HeightRequest="1"
+                         VerticalOptions="Center"/>
+            </Grid>
+
+            
+            <!-- Sign Up Link -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label Text="Don't have an account?"
+                       TextColor="#666666"
+                       FontSize="14"/>
+                <Label x:Name="SignUpLabel"
+                       Text="Sign Up"
+                       TextColor="#1560BD"
+                       FontSize="14"
+                       FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTopSignIn"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

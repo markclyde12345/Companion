@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.GetHelpPage"
+             Title="GetHelpPage"
+             BackgroundColor="#E2DFD2">
+
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Border Grid.Row="0"
+        StrokeThickness="0"
+        BackgroundColor="#D99090"
+        Padding="15,20"
+        HeightRequest="100 ">
+
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                Opacity="0.2"
+                Offset="0,4"
+                Radius="10"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="5">
+
+                <Grid ColumnDefinitions="Auto,*">
+
+                    <!-- Back Button -->
+                    <Label Text="←"
+               FontSize="22"
+               VerticalOptions="Center"
+               TextColor="Black">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!-- Title -->
+                    <Label Grid.Column="1"
+                            Text="Crisis Resource"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            Margin="10,0,0,0"
+                            TextColor="Black"/>
+
+                </Grid>
+
+                <Label Text="You are not alone. Help is available."
+                       FontSize="14"
+                       TextColor="Black"
+                       Margin="32,0,0,0"/>
+
+
+            </VerticalStackLayout>
+
+        </Border>
+
+        <ScrollView Grid.Row="1"
+                    VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <Border  Style="{StaticResource CardStyle}"
+                        StrokeThickness="2"
+                        Stroke="Red"
+                        BackgroundColor="#E6AEAE"
+                        Padding="20"
+                        StrokeShape="20">
+
+                    <Grid VerticalOptions="Center">
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                            Spacing="0"
+                            VerticalOptions="Center"
+                             Margin="10, 0,0,0">
+
+                            <Label Text="If you're in immediate danger"
+                    FontSize="14"
+                    TextColor="#800000"/>
+
+                            <Label Text="Please call 911 or go to your nearest emergency room. Your safety is the top priority."
+                    FontSize="13"
+                    TextColor="#800000"/>
+
+                            <Label Text=" "/>
+
+                            <Button Grid.Row="3"
+                                    Text="Call 911"
+                                    FontSize="14"
+                                    TextColor="#FF0000"
+                                    HeightRequest="45"
+                                        WidthRequest="130"
+                                        BorderColor="Red"
+                                    CornerRadius="12"
+                                    BackgroundColor="white"
+                                        HorizontalOptions="Start"
+                                        Clicked="OnCallEmergencyClicked"/>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <Border  Style="{StaticResource CardStyle}"
+                        BackgroundColor="#E8B5B5"
+                        Padding="20"
+                        StrokeShape="20">
+
+                    <Grid VerticalOptions="Center">
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="0"
+                                                VerticalOptions="Center"
+                                             HorizontalOptions="Center">
+
+
+                            <Label Text="These resources provide confidential support. Reaching out for help is a sign of strength, not weakness. You deserve support and care."
+                                    FontSize="13"
+                                    TextColor="#800000"/>
+
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+                <Label Text="Immediate Support"
+                       FontSize="18"
+                       TextColor="Black"/>
+
+                <Border Style="{StaticResource CardStyle}"
+                        BackgroundColor="white"
+                        Stroke="Red"
+                        StrokeThickness="1"
+                        StrokeShape="20">
+
+
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="0"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+
+
+                        <Label Text="988 Suicide and Crisis Lifetime"
+                                FontSize="13"
+                                TextColor="#800000"/>
+                        <Label Text="988"
+                                FontSize="13"
+                                TextColor="#0000FF"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="Free, confidential support for people in distress, 24/7"
+                                FontSize="13"
+                                TextColor="Black"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="⏰ 24/7"
+                                FontSize="13"
+                                TextColor="Black"
+                               Margin="0, 0, 0 ,10"/>
+
+                        <Button Grid.Row="3"
+                                Text="Call 911"
+                                FontSize="14"
+                                TextColor="#FF0000"
+                                HeightRequest="45"
+                                WidthRequest="130"
+                                BorderColor="Red"
+                                CornerRadius="12"
+                                BackgroundColor="white"
+                                HorizontalOptions="Start"
+                                Clicked="OnCallEmergencyClicked"/>
+
+
+                    </VerticalStackLayout>
+
+
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}"
+                        BackgroundColor="white"
+                        Stroke="Red"
+                        StrokeThickness="1"
+                        StrokeShape="20"
+                        >
+
+
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="0"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+
+
+                        <Label Text="Crisis Text Line"
+                                FontSize="13"
+                                TextColor="#800000"/>
+
+                        <Label Text="Text HOME to 741741"
+                                FontSize="13"
+                                TextColor="#0000FF"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="Free, 24/7 crisis support via text message"
+                                FontSize="13"
+                                TextColor="Black"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="⏰ 24/7"
+                                FontSize="13"
+                                TextColor="Black"
+                               Margin="0,0,0,0"/>
+
+
+                    </VerticalStackLayout>
+
+
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}"
+                        BackgroundColor="white"
+                        Stroke="Red"
+                        StrokeThickness="1"
+                        StrokeShape="20"
+                        >
+
+
+                    <VerticalStackLayout Grid.Column="1"
+                                         Spacing="0"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+
+
+                        <Label Text="Emergency Services"
+                                FontSize="13"
+                                TextColor="#800000"/>
+
+                        <Label Text="911"
+                                FontSize="13"
+                                TextColor="#0000FF"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="For immediate life-threatening emergencies"
+                                FontSize="13"
+                                TextColor="Black"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="⏰ 24/7"
+                                FontSize="13"
+                                TextColor="Black"
+                               />
+
+
+                    </VerticalStackLayout>
+
+
+                </Border>
+
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="2"
+                         Stroke="Red"
+                         BackgroundColor="#E6AEAE"
+                         Padding="20"
+                         StrokeShape="20">
+
+                    <Grid VerticalOptions="Center">
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="0"
+                                            VerticalOptions="Center"
+                                            Margin="10, 0,0,0">
+
+                            <Label Text="Create a Safety Plan"
+                                   FontSize="14"
+                                   TextColor="#800000"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="A safety plan can help you cope during difficult times. Consider including:"
+                                    FontSize="13"
+                                    TextColor="#800000"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; Warning signs that a crisis may be developing"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; Internal coping strategies (breathing, grounding)"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; People and social settings that provide distraction:"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; People you can reach out to for help"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; Professional contacts and crisis resources"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="&#x2022; Ways to make your environment safe"
+                                    FontSize="13"
+                                    TextColor="#800000"
+                                   Margin="20, 0, 0, 0"/>
+
+                            <Label Text=" "/>
+
+
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="2"
+                         Stroke="Red"
+                         BackgroundColor="white"
+                         Padding="20"
+                         StrokeShape="20">
+
+                    <Grid VerticalOptions="Center">
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="0"
+                                            VerticalOptions="Center"
+                                            Margin="10, 0,0,0">
+
+                            <Label Text="International Resources"
+                                   FontSize="16"
+                                   TextColor="Black"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="Find crisis helplines for your country at:"
+                                    FontSize="13"
+                                    TextColor="Black"/>
+
+                            <Label Text=" "/>
+
+                            <Label Text="finahelpline.com"
+                                    FontSize="13"
+                                    TextColor="Blue"
+                                   TextDecorations="Underline">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenUrlCommand}" 
+                              CommandParameter="https://findahelpline.com/" />
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

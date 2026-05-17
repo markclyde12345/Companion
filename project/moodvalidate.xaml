@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.moodvalidate"
+             BackgroundColor="#F5FAF5">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <VerticalStackLayout Padding="24,20,24,16" BackgroundColor="#F5FAF5" Spacing="8">
+
+            <Label Text="Mood Reflection"
+                   TextColor="#1A1A1A"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <ProgressBar x:Name="ProgressBar"
+                         Progress="1.0"
+                         HeightRequest="8"
+                         BackgroundColor="#949494"
+                         ProgressColor="#1A1A1A"
+                         Margin="0,4,0,0"/>
+
+            <Label Text="Final Step — Reflect on your day"
+                   TextColor="#888888"
+                   FontSize="13"
+                   HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="24,8,24,24" Spacing="20">
+
+                <!-- Mood Card -->
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+
+                    <Frame x:Name="MoodCircle"  
+                           BackgroundColor="#B8E2F4"
+                           CornerRadius="45"
+                           WidthRequest="90"
+                           HeightRequest="90"
+                           Padding="0"
+                           HorizontalOptions="Center"
+                           HasShadow="False">
+                        <Label x:Name="MoodEmoji"
+                               Text="😊"
+                               FontSize="38"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+
+                    <Label x:Name="MoodTitle"
+                           Text="You're Feeling Great!"
+                           FontAttributes="Bold"
+                           TextColor="#1A1A1A"
+                           FontSize="24"
+                           HorizontalOptions="Center"/>
+
+                    <Label x:Name="InsightText"
+                           Text="Expressing gratitude can boost your mood even more."
+                           TextColor="#666666"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Tip Card -->
+                <Frame CornerRadius="14"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="16,14">
+                    <HorizontalStackLayout Spacing="12">
+                        <Label Text="✨" FontSize="22" VerticalOptions="Start" Margin="0,2,0,0"/>
+                        <Label VerticalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Prove your happiness! "
+                                          FontAttributes="Bold"
+                                          TextColor="#1A1A1A"
+                                          FontSize="14"/>
+                                    <Span Text="Name 3 specific moments that made you feel great today."
+                                          TextColor="#444444"
+                                          FontSize="14"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Label Text="Be specific — vague answers suggest you might not be as happy as you think!"
+                       FontSize="12"
+                       TextColor="#888888"
+                       HorizontalTextAlignment="Center"/>
+
+                <!-- Joy Moment 1 -->
+                <Label Text="MOMENT 1"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"
+                       Margin="0,4,0,0"/>
+                <Frame CornerRadius="12"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="12,0"
+                       HeightRequest="54">
+                    <Entry x:Name="Joy1Entry"
+                           Placeholder="e.g. Had a heartfelt conversation..."
+                           PlaceholderColor="#AAAAAA"
+                           TextColor="#1A1A1A"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Joy Moment 2 -->
+                <Label Text="MOMENT 2"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"/>
+                <Frame CornerRadius="12"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="12,0"
+                       HeightRequest="54">
+                    <Entry x:Name="Joy2Entry"
+                           Placeholder="e.g. Completed one of my projects..."
+                           PlaceholderColor="#AAAAAA"
+                           TextColor="#1A1A1A"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Joy Moment 3 -->
+                <Label Text="MOMENT 3"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"/>
+                <Frame CornerRadius="12"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="12,0"
+                       HeightRequest="54">
+                    <Entry x:Name="Joy3Entry"
+                           Placeholder="e.g. Enjoyed a walk in the park..."
+                           PlaceholderColor="#AAAAAA"
+                           TextColor="#1A1A1A"
+                           BackgroundColor="Transparent"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Memory Section -->
+                <Label Text="CAPTURE THIS MOMENT"
+                       TextColor="#444444"
+                       FontSize="12"
+                       FontAttributes="Bold"
+                       Margin="0,4,0,0"/>
+
+                <Frame CornerRadius="12"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="12,10">
+                    <Editor x:Name="MemoryEditor"
+                            Placeholder="Today I felt on top of the world because..."
+                            PlaceholderColor="#AAAAAA"
+                            TextColor="#1A1A1A"
+                            HeightRequest="110"
+                            BackgroundColor="Transparent"/>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- BOTTOM BUTTON -->
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="24,12,24,32"
+                             BackgroundColor="#F5FAF5">
+            <Button x:Name="SaveButton"
+                    Text="Save this Happy Memory"
+                    Clicked="OnSaveMemoryClicked"
+                    BackgroundColor="#1560BD"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"/>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

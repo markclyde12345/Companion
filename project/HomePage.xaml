@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:project"
+             x:Class="project.HomePage"
+             Title = "Home"
+             BackgroundColor="{StaticResource PageBackground}"
+             >
+    <!--WidthRequest="450"-->
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Header Card -->
+
+
+        <ScrollView Grid.Row="0" 
+                    VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout Padding="20, 20, 20, 90">
+
+                <Border x:Name="HeaderCard"
+        IsVisible="False"
+        BackgroundColor="white"
+        VerticalOptions="Start"
+        Stroke="Transparent"
+        StrokeThickness="0"
+        Margin="0,0,0,20"
+        Padding="20"
+        Grid.Row="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="0,0,20,20" />
+                        <!-- TopLeft, TopRight, BottomRight, BottomLeft -->
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="5"
+                 Margin="0,50,0,0">
+                        <Label Text="{Binding TodayDate}"
+               FontSize="14"
+               TextColor="#555"/>
+
+                        <Label Text="Welcome back!"
+                FontSize="26"
+                FontAttributes="Bold"
+                TextColor="#444"/>
+
+                        <Label Text="How are you feeling today?"
+                FontSize="16"
+                TextColor="#444"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Daily Check-in Card -->
+                <Border
+                BackgroundColor="#1560BD"
+                Padding="20"
+                Margin="0,0,0,20">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="25"/>
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow Brush="#80000000"
+                            Offset="0,6"
+                            Radius="12"/>
+                    </Border.Shadow>
+
+                    <Grid ColumnDefinitions="*, Auto"
+                      RowDefinitions="Auto,Auto,Auto">
+
+                        <Label Text="😊 Daily check-in"
+                           TextColor="White"
+                           FontSize="14"
+                           Grid.Row="0"/>
+
+                        <Label Text="{Binding MoodStatusText}"
+                           TextColor="White"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Grid.Row="1"/>
+
+                        <Label Text="Take a moment to reflect"
+                           TextColor="White"
+                           FontSize="13"
+                           Grid.Row="2"/>
+
+                        <!-- Floating + Button -->
+                        <Button Grid.Column="1"
+                            Grid.RowSpan="3"
+                            Text="+"
+                            FontSize="28"
+                            WidthRequest="60"
+                            HeightRequest="60"
+                            CornerRadius="30"
+                            BackgroundColor="White"
+                            TextColor="#1560BD"
+                            VerticalOptions="Center"
+                                Clicked="OnCheckInClicked"/>
+
+                    </Grid>
+                </Border>
+
+                <!-- Streak Card -->
+                <Border Style="{StaticResource CardStyle}">
+                    <HorizontalStackLayout Spacing="15">
+
+
+
+                        <VerticalStackLayout>
+                            <Label Text="Current streak"
+                                           FontSize="22"
+                                           TextColor="#555"/>
+
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="🔥"
+                                               FontSize="18"/>
+                                <Label Text="{Binding StreakText}"
+                                                FontSize="16"                                              
+                                               TextColor="black"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!-- This Week Card -->
+                <Border Style="{StaticResource CardStyle}"
+                        Padding="20"
+                        Margin="0,0,0,20">
+
+                    <Grid ColumnDefinitions="*,Auto"
+                          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                        <!-- Title -->
+                        <Label Text="📈 This Week"
+                                FontAttributes="Bold"
+                                FontSize="22"
+                                TextColor="Black"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                               HeightRequest="30"/>
+
+                        <!-- Mood Log -->
+                        <Label Text="MoodLog"
+                                FontSize="16"
+                                TextColor="Black"
+                                Grid.Row="1"
+                               HeightRequest="25"/>
+
+                        <Label Text="{Binding WeeklyTotalMoodText}"
+                               FontSize="16"
+                               TextColor="Black"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               HeightRequest="25"/>
+
+                        <!-- Mood Log Progress Bar (bound to WeeklyTotalMoodProgress) -->
+                        <ProgressBar Progress="1"
+                                     Grid.Row="2"
+                                     Grid.ColumnSpan="2"
+                                     HeightRequest="20"
+                                     ProgressColor="#D9D9D9"
+                                     ScaleY="2.5"/>
+
+                        <ProgressBar Progress="{Binding WeeklyTotalMoodProgress}"
+                                     Grid.Row="2"
+                                     Grid.ColumnSpan="2"
+                                     HeightRequest="20"
+                                     ProgressColor="Black"
+                                     ScaleY="2.5"/>
+
+                        <!-- Coping Exercises -->
+                        <Label Text="Coping Exercises"
+                                FontSize="16"
+                                TextColor="Black"
+                                Grid.Row="3"
+                               HeightRequest="25"/>
+
+                        <Label x:Name="CopingProgressLabel"
+                            Text="{Binding CopingProgressText}"
+                                FontSize="16"
+                                TextColor="Black"
+                                Grid.Row="3"
+                                Grid.Column="1"
+                               HeightRequest="25"/>
+
+                        <!-- Coping Progress -->
+                        <ProgressBar Progress="1.0"
+                     Grid.Row="4"
+                     Grid.ColumnSpan="2"
+                     HeightRequest="20"
+                     ProgressColor="#D9D9D9"
+                     ScaleY="2.5"/>
+
+                        <ProgressBar x:Name="CopingProgressBar"
+                            Progress="0"
+                     Grid.Row="4"
+                     Grid.ColumnSpan="2"
+                     HeightRequest="20"
+                     ProgressColor="Black"
+                     ScaleY="2.5"/>
+
+                    </Grid>
+                </Border>
+
+                <!-- Quick Actions -->
+                <Label Text="Quick Actions"
+                   FontSize="24"
+                   
+                   TextColor="black"
+                   Margin="0,0,0,15"/>
+
+                <HorizontalStackLayout Spacing="25"
+                                       HorizontalOptions="Center">
+
+                    <Border StrokeThickness="2"
+                                Stroke="white"
+                                Style="{StaticResource CardStyle}"
+                                Margin="0,0,0,20"
+                                WidthRequest="140"
+                                HeightRequest="140">
+
+                        <VerticalStackLayout
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Spacing="10">
+
+                            <Border WidthRequest="60"
+                               HeightRequest="60"
+                               StrokeShape="30"
+                               BackgroundColor="#89CFF0"
+                               Padding="0">
+
+                                <Label Text="🧘"
+                                   FontSize="28"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+/>
+                            </Border>
+
+                            <Label Text="Coping Tools"
+                               FontSize="14"
+                               HorizontalTextAlignment="Center"
+                                           TextColor="black"/>
+
+
+
+
+                        </VerticalStackLayout>
+
+
+
+                        <Border.GestureRecognizers>
+
+                            <TapGestureRecognizer Tapped="OnCopingTapped"/>
+
+                            <!-- Desktop Hover -->
+                            <PointerGestureRecognizer
+                                            PointerEntered="OnPointerEntered"
+                                            PointerExited="OnPointerExited" />
+
+                            <!-- Mobile Press -->
+                            <PointerGestureRecognizer
+                                            PointerPressed="OnPressed"
+                                            PointerReleased="OnReleased" />
+
+                        </Border.GestureRecognizers>
+
+                    </Border>
+
+                    <Border Style="{StaticResource CardStyle}"
+                                WidthRequest="140"
+                                HeightRequest="140"
+                                StrokeThickness="2"
+                                Margin="0,0,0,20"
+                                Stroke="white">
+
+                        <VerticalStackLayout
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Spacing="10">
+
+                            <Border WidthRequest="60"
+                               HeightRequest="60"
+                               StrokeShape="30"
+                               BackgroundColor="#202A44"
+                               Padding="0">
+
+                                <Label Text="📊"
+                                   FontSize="28"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                            </Border>
+
+                            <Label Text="Progress"
+                               FontSize="14"
+                               HorizontalTextAlignment="Center"
+                                           TextColor="black"/>
+                        </VerticalStackLayout>
+
+                        <Border.GestureRecognizers>
+
+                            <!-- Desktop Hover -->
+                            <PointerGestureRecognizer
+                                        PointerEntered="OnPointerEntered"
+                                        PointerExited="OnPointerExited" />
+
+                            <!-- Mobile Press -->
+                            <PointerGestureRecognizer
+                                        PointerPressed="OnPressed"
+                                        PointerReleased="OnReleased" />
+
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                </HorizontalStackLayout>
+
+                <Border Stroke="red"   
+                        StrokeThickness="3"
+                        BackgroundColor="#FF9D9C"
+                        Padding="20"
+                        Margin="0,0,0,20"
+                        StrokeShape="25">
+
+                    <Grid ColumnDefinitions="*, Auto"
+                            RowDefinitions="Auto,Auto,Auto">
+
+                        <Label Text="Need immediate support?"
+                                TextColor="red"
+                                FontSize="18"
+                               HeightRequest="30"/>
+
+                        <Label Text="Access crisis resources and helpliness"
+                                TextColor="red"
+                                FontSize="15"
+                                Grid.Row="1"
+                               HeightRequest="30"/>
+
+                        <Button Grid.Row="3"
+                                Text="GET HELP NOW!"
+                                FontSize="18"
+                                TextColor="White"
+                                HeightRequest="40"
+                                CornerRadius="12"
+                                BackgroundColor="Red"
+                                VerticalOptions="Center"
+                                Clicked="OnGoToCopingToolsClicked"/>
+
+                    </Grid>
+                </Border>
+
+
+                <Border Style="{StaticResource CardStyle}"
+                        Padding="20"
+                        Margin="0,0,0,20"
+                        BackgroundColor="#89CFF0">
+
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Image Source="lotus_1312104.png" 
+           HeightRequest="50"
+           WidthRequest="50"
+           HorizontalOptions="Center"
+           VerticalOptions="Center" />
+
+                        <Label x:Name="QuoteLabel"
+           Text="Loading quote..."
+           TextColor="black"
+           FontSize="16"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center"/>
+
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+
+
+        </ScrollView>
+
+
+        <components:NavigationBar Grid.Row="1"/>
+
+        <AbsoluteLayout Grid.RowSpan="2"
+                    InputTransparent="True">
+
+            <Border x:Name="ChatBubble"
+                AbsoluteLayout.LayoutBounds="1,1,75,210"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                WidthRequest="60"
+                HeightRequest="60"
+                BackgroundColor="#4A7C6F"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 30"
+                InputTransparent="False"
+                ZIndex="999"
+                Shadow="{Shadow Brush=Black, Opacity=0.35, Radius=15, Offset='0,6'}">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnChatBubbleTapped"/>
+                </Border.GestureRecognizers>
+
+                <Label Text="💬"
+                   FontSize="28"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            </Border>
+
+        </AbsoluteLayout>
+
+
+    </Grid>
+
+
+</ContentPage>
+ 

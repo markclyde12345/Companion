@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="project.MoodCheckInPage"
+    BackgroundColor="#F5FAF5">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- HEADER -->
+        <VerticalStackLayout Padding="24,20,24,16" Spacing="12" BackgroundColor="#F5FAF5">
+
+            <Button Text="← Back"
+                HorizontalOptions="Start"
+                BackgroundColor="Transparent"
+                TextColor="#1A1A1A"
+                FontSize="15"
+                Padding="0"
+                Clicked="OnBackClicked"/>
+            
+            
+            <!-- Page Title -->
+            <Label Text="Mood Check-In"
+                   HorizontalOptions="Center"
+                   TextColor="#1A1A1A"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   Margin="0,6,0,0"/>
+
+            <!-- Progress Bar -->
+            <ProgressBar x:Name="progressBar"
+                         HeightRequest="8"
+                         BackgroundColor="#d3d3d3"
+                         ProgressColor= "#1A1A1A"
+                         Margin="0,4,0,0"/>
+
+            <!-- Step indicator -->
+            <Label x:Name="StepLabel"
+                   Text="Step 1 of 5"
+                   HorizontalOptions="Center"
+                   TextColor="#808080"
+                   FontSize="13"/>
+        </VerticalStackLayout>
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="24,10,24,24"
+                                 Spacing="24"
+                                 VerticalOptions="Center">
+
+                <!-- Brain Icon -->
+                <Frame CornerRadius="22"
+                       BackgroundColor="#d8f9ff"
+                       WidthRequest="90"
+                       HeightRequest="90"
+                       HorizontalOptions="Center"
+                       HasShadow="False"
+                       Padding="0">
+                    <Image Source="logo2.png"
+                           WidthRequest="56"
+                           HeightRequest="56"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Question Card -->
+                <Frame CornerRadius="16"
+                       BackgroundColor="#d8f9ff"
+                       BorderColor="#1560BD"
+                       HasShadow="False"
+                       Padding="20,16">
+                    <Label x:Name="questionlabel"
+                           HorizontalTextAlignment="Center"
+                           TextColor="#1A1A1A"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           LineHeight="1.4"/>
+                </Frame>
+
+                <!-- Answer Options -->
+                <CollectionView x:Name="answersCollection"
+                                SelectionMode="Single"
+                                SelectionChanged="OnAnswerSelected">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke= "#1560BD"
+                                    StrokeThickness="1.5"
+                                    Padding="16">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14"/>
+                                </Border.StrokeShape>
+                                <Label Text="{Binding Text}"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="16"
+                                       TextColor="#1A1A1A"/>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White"/>
+                                                <Setter Property="Scale" Value="1"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#d8f9ff"/>
+                                                <Setter Property="Scale" Value="0.97"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- BOTTOM BUTTON -->
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="24,12,24,32"
+                             Spacing="12"
+                             BackgroundColor="#d8f9ff">
+
+            <Button x:Name="NextButton"
+                    Text="Next →"
+                    Clicked="OnNextClicked"
+                    BackgroundColor="#1560BD"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    IsEnabled="False"
+                    Opacity="0.5"/>
+
+            
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

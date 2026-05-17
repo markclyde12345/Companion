@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.HeavyExhaustedValidationPage"
+             BackgroundColor="#F5FAF5">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="24,20,24,40" Spacing="0" BackgroundColor="#F5FAF5">
+
+			<!-- Header Row -->
+			<Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="0">
+					<Label Text="COM" TextColor="#1A1A1A" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                    <Label Text="PANION" TextColor="#1560BD" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+				</HorizontalStackLayout>
+			</Grid>
+
+			<!-- Progress Bar -->
+			<ProgressBar x:Name="ProgressBar"
+                         Progress="0.7  "
+                         HeightRequest="8"
+                         BackgroundColor="#949494"
+                         ProgressColor="#1A1A1A"
+                         Margin="0,0,0,6"/>
+			<Label Text="Activity Check-In"
+                   HorizontalOptions="Center"
+                   TextColor="#888888"
+                   FontSize="13"
+                   Margin="0,0,0,24"/>
+
+			<!-- Mood Icon -->
+            <Frame BackgroundColor="#d8f9ff"
+                   CornerRadius="45"
+                   WidthRequest="90"
+                   HeightRequest="90"
+                   Padding="0"
+                   HorizontalOptions="Center"
+                   HasShadow="False"
+                   Margin="0,0,0,12">
+				<Label x:Name="MoodEmoji"
+                       Text="😢"
+                       FontSize="38"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- Mood Title -->
+			<Label x:Name="MoodTitle"
+                   Text="You're going through something difficult"
+                   TextColor="#1A1A1A"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,8"/>
+
+			<Label Text="Your body is telling you something. Let's gently check in and give yourself permission to rest and recover."
+                   FontSize="14"
+                   TextColor="#666666"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,24"/>
+
+			<!-- Gentle Rest Tip Card -->
+			<Frame CornerRadius="14"
+                   BackgroundColor="#d8f9ff"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="16,14"
+                   Margin="0,0,0,24">
+				<HorizontalStackLayout Spacing="12">
+					<Label FontSize="22" VerticalOptions="Start" Margin="0,2,0,0"/>
+					<Label VerticalOptions="Center" LineBreakMode="WordWrap" MaximumWidthRequest="300">   
+						<Label.FormattedText>
+							<FormattedString>
+								<Span Text="Gentle Rest Activity: "
+                                      FontAttributes="Bold"
+                                      TextColor="#1A1A1A"
+                                      FontSize="14"/>
+								<Span Text="Honor your body's signals. Rest is not giving up — it is healing."
+                                      TextColor="#555555"
+                                      FontSize="14"/>
+							</FormattedString>
+						</Label.FormattedText>
+					</Label>
+				</HorizontalStackLayout>
+			</Frame>
+
+			<!-- Instruction -->
+			<Label Text="Take a gentle pause, then reflect on how your body feels:"
+                   TextColor="#444444"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,16"/>
+
+			<!-- WHERE IN YOUR BODY DO YOU FEEL HEAVINESS OR PAIN -->
+			<Label Text="WHERE IN YOUR BODY DO YOU FEEL HEAVINESS OR PAIN?"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#d8f9ff"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,16">
+				<Entry x:Name="BodyEntry"
+                       Placeholder="e.g. chest, legs, head, everywhere..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- HOW LONG HAVE YOU BEEN FEELING THIS WAY -->
+			<Label Text="HOW LONG HAVE YOU BEEN FEELING THIS WAY?"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#d8f9ff"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,16">
+				<Entry x:Name="DurationEntry"
+                       Placeholder="e.g. since morning, a few days..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- ONE GENTLE THING YOU CAN DO FOR YOUR BODY NOW -->
+			<Label Text="ONE GENTLE THING YOU CAN DO FOR YOUR BODY NOW"
+                   TextColor="#444444"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,6"/>
+			<Frame CornerRadius="12"
+                   BackgroundColor="#d8f9ff"
+                   BorderColor="#1560BD"
+                   HasShadow="False"
+                   Padding="12,0"
+                   HeightRequest="54"
+                   Margin="0,0,0,28">
+				<Entry x:Name="GentleEntry"
+                       Placeholder="e.g. lie down, drink water, stretch..."
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="#1A1A1A"
+                       BackgroundColor="Transparent"
+                       VerticalOptions="Center"/>
+			</Frame>
+
+			<!-- Submit Button -->
+			<Button Text="Submit Activity"
+                    Clicked="OnSubmitActivityClicked"
+                    BackgroundColor="#1560BD"
+                    TextColor="White"
+                    HeightRequest="54"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontSize="17"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

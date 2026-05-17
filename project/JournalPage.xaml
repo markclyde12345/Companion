@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.JournalPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F6F1E7">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20">
+
+        <!-- Close -->
+        <Label Text="✕"
+               FontSize="20"
+               TextColor="#333"
+               HorizontalOptions="Start"
+               VerticalOptions="Start">
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnCloseTapped"/>
+            </Label.GestureRecognizers>
+
+        </Label>
+
+        <!-- Prompt Card -->
+        <Frame Grid.Row="1"
+               BackgroundColor="White"
+               CornerRadius="22"
+               Padding="20"
+               HasShadow="False"
+               VerticalOptions="Center">
+
+            <VerticalStackLayout Spacing="15">
+
+                <Label Text="How are you feeling right now?"
+                       FontSize="22"
+                       TextColor="#222"
+                       FontAttributes="Bold"/>
+
+                <Label Text="Take your time. There is no right answer."
+                       FontSize="14"
+                       TextColor="Gray"/>
+
+                <Editor x:Name="journalEditor"
+                        HeightRequest="250"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Placeholder="Start writing here..."
+                        FontSize="16"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+
+        <!-- Save -->
+        <Button Grid.Row="2"
+                Text="Save and Release"
+                BackgroundColor="#3C6E71"
+                TextColor="White"
+                CornerRadius="25"
+                HeightRequest="55"
+                Clicked="OnSaveClicked"/>
+    </Grid>
+
+</ContentPage>

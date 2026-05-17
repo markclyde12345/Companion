@@ -1,0 +1,592 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:project"
+             x:Class="project.CopingToolsPage"
+             Title="Coping Tools"
+             BackgroundColor="#E2DFD2">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ================= HEADER ================= -->
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="White"
+                Padding="15,20"
+                HeightRequest="100">
+
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                        Opacity="0.2"
+                        Offset="0,4"
+                        Radius="10"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="5">
+
+                <Grid ColumnDefinitions="Auto,*">
+
+                    <!-- Back Button -->
+                    <Label Text="←"
+                           FontSize="22"
+                           VerticalOptions="Center"
+                           TextColor="Black">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!-- Title -->
+                    <Label Grid.Column="1"
+                           Text="Coping Tools"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0"
+                           TextColor="Black"/>
+
+                </Grid>
+
+                <!-- Subtitle -->
+                <Label Text="Activity that makes you feel better"
+                       FontSize="14"
+                       TextColor="Gray"
+                       Margin="32,0,0,0"/>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+        <!-- ================= CONTENT ================= -->
+        <ScrollView Grid.Row="1"
+                    VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout Padding="20, 20, 20, 90" Spacing="20">
+
+                <Label Text="Recommended for you"
+                        TextColor="Black"
+                       FontSize= "18" />
+
+
+
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="0"
+                         BackgroundColor="White"
+                        Padding="20"
+                        HeightRequest="120"
+                        StrokeShape="RoundRectangle 20">
+
+                    <Grid ColumnDefinitions="80,*,Auto"
+                            VerticalOptions="Center">
+
+                        <!-- LEFT IMAGE -->
+                        <Border BackgroundColor="#E6E6FA"
+                                StrokeShape="15">
+                            <Image Source="meditation_4856915.png"
+                                    WidthRequest="70"
+                                    HeightRequest="70"
+                                    Aspect="AspectFill"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    />
+                        </Border>
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="2"
+                                            VerticalOptions="Center"
+                                             Margin="10, 0,0,0">
+
+                            <Label Text="Guided Meditation"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"/>
+
+                            <Label Text="10-minute calming session"
+                                    FontSize="13"
+                                    TextColor="Gray"/>
+                            <Label Text="  "/>
+
+                            <Label Text="10 mins"
+                                    FontSize="12"
+                                    TextColor="#1560BD"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PLAY BUTTON -->
+                        <Border Style="{StaticResource CardStyle}"
+                                Grid.Column="2"
+                                WidthRequest="56"
+                                HeightRequest="56"
+                                BackgroundColor="white"
+                                Margin="0,1,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                >
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMeditationTapped"/>
+                            </Border.GestureRecognizers>
+
+
+                            <Image Source="play_15793714.png" 
+                                   VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                   Aspect="AspectFit"/>
+
+
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="0"
+                         BackgroundColor="White"
+                        Padding="20"
+                        HeightRequest="120"
+                        StrokeShape="RoundRectangle 20">
+
+                    <Grid ColumnDefinitions="80,*,Auto"
+                            VerticalOptions="Center">
+
+                        <!-- LEFT IMAGE -->
+                        <Border BackgroundColor="#7BC4B2"
+                                StrokeShape="15">
+                            <Image Source="breath_16953596.png"
+                                    WidthRequest="70"
+                                    HeightRequest="70"
+                                    Aspect="AspectFill"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    />
+                        </Border>
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="2"
+                                            VerticalOptions="Center"
+                                             Margin="10, 0,0,0">
+
+                            <Label Text="Breathing Exercise"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"/>
+
+                            <Label Text="Box Breathing Technique"
+                                    FontSize="13"
+                                    TextColor="Gray"/>
+                            <Label Text="  "/>
+
+                            <Label Text="3 mins"
+                                    FontSize="12"
+                                    TextColor="#1560BD"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PLAY BUTTON -->
+                        <Border Style="{StaticResource CardStyle}"
+                                Grid.Column="2"
+                                WidthRequest="56"
+                                HeightRequest="56"
+                                BackgroundColor="white"
+                                Margin="0,1,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                >
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBreathingTapped"/>
+                            </Border.GestureRecognizers>
+
+                            <Image Source="play_15793714.png"
+                                   VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                   Aspect="AspectFit"/>
+
+
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="0"
+                         BackgroundColor="White"
+                        Padding="20"
+                        HeightRequest="120"
+                        StrokeShape="RoundRectangle 20">
+
+                    <Grid ColumnDefinitions="80,*,Auto"
+                            VerticalOptions="Center">
+
+                        <!-- LEFT IMAGE -->
+                        <Border BackgroundColor="#B8C0FF"
+                                StrokeShape="15">
+                            <Image Source="agenda_11776425.png"
+                                    WidthRequest="70"
+                                    HeightRequest="70"
+                                    Aspect="AspectFill"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    />
+                        </Border>
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="2"
+                                            VerticalOptions="Center"
+                                             Margin="10, 0,0,0">
+
+                            <Label Text="Journaling Prompt"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"/>
+
+                            <Label Text="Reflect on you thoughts"
+                                    FontSize="13"
+                                    TextColor="Gray"/>
+                            <Label Text="  "/>
+
+                            <Label Text="5 mins"
+                                    FontSize="12"
+                                    TextColor="#1560BD"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PLAY BUTTON -->
+                        <Border Style="{StaticResource CardStyle}"
+                                Grid.Column="2"
+                                WidthRequest="56"
+                                HeightRequest="56"
+                                BackgroundColor="white"
+                                Margin="0,1,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                >
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnJournalingTapped"/>
+                            </Border.GestureRecognizers>
+
+                            <Image Source="play_15793714.png"
+                                   VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                   Aspect="AspectFit"/>
+
+
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+
+                <Border  Style="{StaticResource CardStyle}"
+                         StrokeThickness="0"
+                         BackgroundColor="White"
+                        Padding="20"
+                        HeightRequest="120"
+                        StrokeShape="RoundRectangle 20">
+
+                    <Grid ColumnDefinitions="80,*,Auto"
+                            VerticalOptions="Center">
+
+                        <!-- LEFT IMAGE -->
+                        <Border BackgroundColor="#FFD6A5"
+                                StrokeShape="15">
+                            <Image Source="star_5650319.png"
+                                   WidthRequest="70"
+                                    HeightRequest="70"
+                                    Aspect="AspectFill"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    />
+                        </Border>
+
+
+                        <!-- TEXT SECTION -->
+                        <VerticalStackLayout Grid.Column="1"
+                                            Spacing="2"
+                                            VerticalOptions="Center"
+                                             Margin="10, 0,0,0">
+
+                            <Label Text="Positive Affirmations"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"/>
+
+                            <Label Text="Boost your confidence"
+                                    FontSize="13"
+                                    TextColor="Gray"/>
+                            <Label Text="  "/>
+
+                            <Label Text="2 mins"
+                                    FontSize="12"
+                                    TextColor="#1560BD"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PLAY BUTTON -->
+                        <Border Style="{StaticResource CardStyle}"
+                                Grid.Column="2"
+                                WidthRequest="56"
+                                HeightRequest="56"
+                                BackgroundColor="white"
+                                Margin="0,1,0,0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                >
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAffirmationTapped"/>
+                            </Border.GestureRecognizers>
+
+                            <Image Source="play_15793714.png"
+                                   VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                   Aspect="AspectFit"/>
+
+
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+                <Label Text="Quick Mood Boosters"
+                        TextColor="Black"
+                        FontSize= "18" />
+
+
+
+                <Grid ColumnDefinitions="*,*"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="15"
+                        ColumnSpacing="15">
+
+                    <!-- Button 1 -->
+                    <Border Style="{StaticResource CardStyle}"
+                            StrokeThickness="0"
+                            StrokeShape="20"
+                            HeightRequest="155"
+                            WidthRequest="155"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                             VerticalOptions="Center" 
+                                             Spacing="5">
+
+                            <Border BackgroundColor="#E6E6FA"
+                                    HeightRequest="56"
+                                    WidthRequest="56"
+                                    StrokeShape="Ellipse">
+                                <Image Source="musical_18726167.png"
+                                    WidthRequest="40"
+                                    HeightRequest="40"
+                                    Aspect="AspectFit"/>
+                            </Border>
+
+                            <Label Text="Calming Sounds"
+                                    FontSize="13"
+                                    HorizontalOptions="Center"
+                                    TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Button 2 -->
+                    <Border Grid.Column="1"
+                            Style="{StaticResource CardStyle}"
+                            StrokeThickness="0"
+                            StrokeShape="20"
+                            HeightRequest="155"
+                            WidthRequest="155"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                             VerticalOptions="Center" 
+                                             Spacing="5">
+                            <Border BackgroundColor="#4f6642"
+                                    HeightRequest="56"
+                                    WidthRequest="56"
+                                    StrokeShape="Ellipse">
+                                <Image Source="ginger_12889948.png"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Aspect="AspectFit"/>
+                            </Border>
+                            <Label Text="Take a Break"
+                                    FontSize="13"
+                                    HorizontalOptions="Center"
+                                    TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Button 3 -->
+                    <Border Grid.Row="1"
+                            Style="{StaticResource CardStyle}"
+                            StrokeThickness="0"
+                            StrokeShape="20"
+                            HeightRequest="155"
+                            WidthRequest="155"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                             VerticalOptions="Center" 
+                                             Spacing="5">
+                            <Border BackgroundColor="#B8C0FF"
+                                    HeightRequest="56"
+                                    WidthRequest="56"
+                                    StrokeShape="Ellipse">
+                                <Image Source="stars_18561814.png" 
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Aspect="AspectFit"/>
+                            </Border>
+                            <Label Text="Gratitude Note"
+                                    FontSize="13"
+                                    HorizontalOptions="Center"
+                                    TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Button 4 -->
+                    <Border Grid.Row="1" Grid.Column="1"
+                            Style="{StaticResource CardStyle}"
+                            StrokeThickness="0"
+                            StrokeShape="20"
+                            HeightRequest="155"
+                            WidthRequest="155"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <VerticalStackLayout HorizontalOptions="Center" 
+                                             VerticalOptions="Center" 
+                                             Spacing="5">
+                            <Border BackgroundColor="#FFD6A5"
+                                    HeightRequest="56"
+                                    WidthRequest="56"
+                                    StrokeShape="Ellipse">
+                                <Image Source="bookmark_6783743.png" 
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Aspect="AspectFit"/>
+                            </Border>
+                            <Label Text="Read Quote"
+                                    FontSize="13"
+                                    HorizontalOptions="Center"
+                                    TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                </Grid>
+
+                <!-- Tip Card -->
+                <Border Style="{StaticResource CardStyle}"
+                        BackgroundColor="#E2DFD2"
+                        Padding="20">
+
+                    <Grid ColumnDefinitions="Auto,*"
+                            ColumnSpacing="8">
+
+                        <!-- Icon -->
+                        <Image Source="lightbulb_18447609.png"
+                                WidthRequest="24"
+                                HeightRequest="24"
+                                Aspect="AspectFit"
+                                VerticalOptions="Start"/>
+
+                        <!-- Text Section -->
+                        <VerticalStackLayout Grid.Column="1"
+                             Spacing="2">
+
+                            <Label Text="Tip!"
+                                    FontAttributes="Bold"
+                                    FontSize="13"
+                                    TextColor="Black"/>
+
+                            <Label Text="Try to practice at least one coping activity daily for best results."
+                                    FontSize="13"
+                                    TextColor="Black"
+                                    LineBreakMode="WordWrap"/>
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid x:Name="ActivityPopup"
+Grid.RowSpan="2"
+IsVisible="False"
+Opacity="0"
+BackgroundColor="#80000000"
+ZIndex="999">
+
+            <Border x:Name="PopupCard"
+      BackgroundColor="White"
+      WidthRequest="310"
+      Padding="18"
+      StrokeShape="RoundRectangle 22"
+      VerticalOptions="Center"
+      HorizontalOptions="Center">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Close -->
+                    <Label Text="✕"
+             FontSize="18"
+             HorizontalOptions="End"
+             TextColor="Black">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ClosePopup"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!-- Dynamic Image -->
+                    <Image x:Name="PopupImage"
+             HeightRequest="160"
+             Aspect="AspectFill"/>
+
+                    <!-- Dynamic Title -->
+                    <Label x:Name="PopupTitle"
+             FontSize="18"
+             FontAttributes="Bold"
+             TextColor="Black"/>
+
+                    <!-- Dynamic Description -->
+                    <Label x:Name="PopupDescription"
+             FontSize="13"
+             TextColor="Gray"/>
+
+                    <!-- Dynamic Duration -->
+                    <Label x:Name="PopupDuration"
+             FontSize="13"
+             TextColor="#1560BD"/>
+
+                    <!-- Button -->
+                    <Button x:Name="StartButton"
+                        Text="▶ Start Activity"
+              BackgroundColor="#1560BD"
+              TextColor="White"
+              CornerRadius="20"
+              Clicked="StartActivity"/>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </Grid>
+
+        <components:NavigationBar Grid.Row="1"/>
+
+    </Grid>
+
+</ContentPage>

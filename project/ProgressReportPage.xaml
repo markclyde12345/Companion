@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls"
+             x:Class="project.ProgressReportPage"
+             BackgroundColor="#F2EFE9"
+             Shell.NavBarIsVisible="False">
+    
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        
+            
+
+        <!-- TOP NAV BAR -->
+        <Grid Grid.Row="0"
+              BackgroundColor="White"
+              Padding="16,12"
+              ColumnDefinitions="Auto,*,Auto">
+            <ImageButton Grid.Column="0"
+                         Source="arrow_back.png"
+                         WidthRequest="24"
+                         HeightRequest="24"
+                         BackgroundColor="Transparent"
+                         Clicked="OnBackClicked"/>
+            <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0,0,0">
+                <Label Text="Progress Report"
+                       FontSize="17"
+                       FontAttributes="Bold"
+                       TextColor="#1A1A1A"/>
+                <Label Text="Your wellness journey"
+                       FontSize="12"
+                       TextColor="#888888"/>
+            </StackLayout>
+
+            <Button Text="← Back"
+                    HorizontalOptions="Start"
+                    BackgroundColor="Transparent"
+                    TextColor="#1A1A1A"
+                    FontSize="15"
+                    Padding="0"
+                    Clicked="OnBackbuttonClicked"/>
+        </Grid>
+
+        <!-- SCROLLABLE CONTENT -->
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="16,16,16,8" Spacing="14">
+
+                <!-- STAT CARDS ROW: Avg Mood | Mood Log | Activities -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+
+                    <!-- Avg Mood Card -->
+                    <Frame Grid.Column="0"
+                           BackgroundColor="White"
+                           CornerRadius="14"
+                           Padding="10,14"
+                           HasShadow="False">
+                        <StackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label x:Name="AvgMoodEmoji"
+                                   Text="😊"
+                                   FontSize="22"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Avg Mood"
+                                   FontSize="11"
+                                   TextColor="#888888"
+                                   HorizontalOptions="Center"/>
+                            <Label x:Name="AvgMoodLabel"
+                                   Text="—"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label x:Name="AvgMoodSubLabel"
+                                   Text=""
+                                   FontSize="11"
+                                   TextColor="#888888"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Mood Log Card -->
+                    <Frame Grid.Column="1"
+                           BackgroundColor="White"
+                           CornerRadius="14"
+                           Padding="10,14"
+                           HasShadow="False">
+                        <StackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label Text="📋" FontSize="22" HorizontalOptions="Center"/>
+                            <Label Text="Mood Log" FontSize="11" TextColor="#888888" HorizontalOptions="Center"/>
+                            <Label x:Name="MoodLogCountLabel"
+                                   Text="0"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="this week"
+                                   FontSize="10"
+                                   TextColor="#AAAAAA"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Activities Card -->
+                    <Frame Grid.Column="2"
+                           BackgroundColor="White"
+                           CornerRadius="14"
+                           Padding="12,14"
+                           HasShadow="False">
+                        <StackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label Text="🎯" FontSize="22" HorizontalOptions="Center"/>
+                            <Label Text="Activities" FontSize="11" TextColor="#888888" HorizontalOptions="Center"/>
+                            <Label x:Name="ActivitiesLabel"
+                                   Text="0"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                </Grid>
+
+                <!-- INSIGHT CARD -->
+                <Frame BackgroundColor="#5BC8D0"
+                       CornerRadius="16"
+                       Padding="16,14"
+                       HasShadow="False">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label Grid.Column="0" Text="✨" FontSize="26" VerticalOptions="Center"/>
+                        <StackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="Insight"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                            <Label x:Name="InsightLabel"
+                                   Text="Complete your first check-in to see insights!"
+                                   FontSize="13"
+                                   TextColor="White"
+                                   LineBreakMode="WordWrap"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- TAB SWITCHER -->
+                <Frame BackgroundColor="White" CornerRadius="20" Padding="4" HasShadow="False">
+                    <Grid ColumnDefinitions="*,*">
+                        <Frame x:Name="Tab7Days"
+                               Grid.Column="0"
+                               BackgroundColor="White"
+                               CornerRadius="16"
+                               Padding="0,8"
+                               HasShadow="True">
+                            <Label Text="Mood Trends"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#1A1A1A"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                        <Frame x:Name="Activities"
+                               Grid.Column="1"
+                               BackgroundColor="Transparent"
+                               CornerRadius="16"
+                               Padding="0,8"
+                               HasShadow="False">
+                            <Label Text="Activities"
+                                   FontSize="14"
+                                   TextColor="#888888"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!-- MOOD CHART CARD -->
+                <Frame BackgroundColor="White" CornerRadius="16" Padding="16" HasShadow="False">
+                    <StackLayout Spacing="10">
+
+                        <!-- Chart header: period label + 7-day avg badge -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                                <Label x:Name="ChartPeriodLabel"
+                                       Text="Last 7 days"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1A1A1A"/>
+                            </StackLayout>
+
+                            <!-- Avg badge (top-right of chart card) -->
+                            <Border Grid.Column="1"
+                                    x:Name="ChartAvgBadge"
+                                    Background="#EEF9FA"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 20"
+                                    Padding="10,6"
+                                    VerticalOptions="Center"
+                                    IsVisible="False">
+                                <StackLayout Orientation="Horizontal" Spacing="4">
+                                    <Label x:Name="ChartAvgEmoji"
+                                           Text="😊"
+                                           FontSize="14"
+                                           VerticalOptions="Center"/>
+                                    <StackLayout Spacing="0" VerticalOptions="Center">
+                                        <Label Text="7-day avg"
+                                               FontSize="9"
+                                               TextColor="#888888"/>
+                                        <Label x:Name="ChartAvgLabel"
+                                               Text="—"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#5BC8D0"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="20,*" HeightRequest="160">
+                            <StackLayout Grid.Column="0" VerticalOptions="Fill" Spacing="0">
+                                <Label Text="5" FontSize="10" TextColor="#AAAAAA" VerticalOptions="Start"/>
+                                <Label Text="4" FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="3" FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="2" FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="1" FontSize="10" TextColor="#AAAAAA" VerticalOptions="End"/>
+                            </StackLayout>
+
+                            <AbsoluteLayout Grid.Column="1"
+                                            x:Name="ChartCanvas"
+                                            HeightRequest="160">
+                                <BoxView Color="#F0F0F0" HeightRequest="1"
+                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                         AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                                <BoxView Color="#F0F0F0" HeightRequest="1"
+                                         AbsoluteLayout.LayoutBounds="0,40,1,1"
+                                         AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                                <BoxView Color="#F0F0F0" HeightRequest="1"
+                                         AbsoluteLayout.LayoutBounds="0,80,1,1"
+                                         AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                                <BoxView Color="#F0F0F0" HeightRequest="1"
+                                         AbsoluteLayout.LayoutBounds="0,120,1,1"
+                                         AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                                <BoxView Color="#F0F0F0" HeightRequest="1"
+                                         AbsoluteLayout.LayoutBounds="0,159,1,1"
+                                         AbsoluteLayout.LayoutFlags="WidthProportional"/>
+
+                                <Border x:Name="ChartTooltip"
+                                        IsVisible="False"
+                                        Background="#2D2D2D"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 8"
+                                        Padding="8,4"
+                                        AbsoluteLayout.LayoutFlags="None"
+                                        AbsoluteLayout.LayoutBounds="0,0,90,28"
+                                        ZIndex="99">
+                                    <Label x:Name="ChartTooltipLabel"
+                                           TextColor="White"
+                                           FontSize="11"
+                                           HorizontalOptions="Center"/>
+                                </Border>
+                            </AbsoluteLayout>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="20,*">
+                            <Grid x:Name="XAxisLabels"
+                                  Grid.Column="1"
+                                  ColumnDefinitions="*,*,*,*,*,*,*">
+                                <Label Grid.Column="0" Text="Mon" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="1" Text="Tue" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="2" Text="Wed" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="3" Text="Thu" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="4" Text="Fri" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="5" Text="Sat" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                                <Label Grid.Column="6" Text="Sun" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="Center"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*" Margin="20,0,0,0">
+                            <Label Grid.Column="0" Text="1 = Difficult" FontSize="10" TextColor="#AAAAAA"/>
+                            <Label Grid.Column="1" Text="5 = Great" FontSize="10" TextColor="#AAAAAA" HorizontalOptions="End"/>
+                        </Grid>
+
+                        <Label x:Name="EmptyChartLabel"
+                               Text="No check-ins yet. Complete a mood check-in to see your chart!"
+                               FontSize="13"
+                               TextColor="#AAAAAA"
+                               HorizontalTextAlignment="Center"
+                               IsVisible="False"
+                               Margin="0,10"/>
+
+                    </StackLayout>
+                </Frame>
+
+                <!-- MONTHLY AVERAGE CHART -->
+                <Frame BackgroundColor="White" CornerRadius="16" Padding="16" HasShadow="False">
+                    <StackLayout Spacing="10">
+
+                        <Label Text="Monthly Average"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#555555"/>
+
+                        <Grid ColumnDefinitions="20,*" HeightRequest="150">
+                            <StackLayout Grid.Column="0" VerticalOptions="Fill" Spacing="0">
+                                <Label Text="35" FontSize="10" TextColor="#AAAAAA" VerticalOptions="Start"/>
+                                <Label Text="25" FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="15" FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="5"  FontSize="10" TextColor="#AAAAAA" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="0"  FontSize="10" TextColor="#AAAAAA" VerticalOptions="End"/>
+                            </StackLayout>
+
+                            <Grid x:Name="MonthlyChartGrid"
+                                  Grid.Column="1"
+                                  VerticalOptions="Fill"
+                                  HeightRequest="150"/>
+                        </Grid>
+
+                        <Border x:Name="MonthlyTooltip"
+                                IsVisible="False"
+                                Background="#2D2D2D"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="8,4"
+                                HorizontalOptions="Center"
+                                Margin="0,4,0,0">
+                            <Label x:Name="MonthlyTooltipLabel"
+                                   TextColor="White"
+                                   FontSize="11"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+
+                    </StackLayout>
+                </Frame>
+
+                <!-- RECENT MOOD ENTRIES -->
+                <Frame BackgroundColor="White" CornerRadius="16" Padding="16" HasShadow="False">
+                    <StackLayout Spacing="10">
+                        <Label Text="Recent Check-ins"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#555555"/>
+                        <CollectionView x:Name="RecentEntriesCollection"
+                                        SelectionMode="None">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="Auto,*,Auto"
+                                          Padding="0,6"
+                                          ColumnSpacing="12">
+                                        <Label Grid.Column="0"
+                                               Text="{Binding Emoji}"
+                                               FontSize="24"
+                                               VerticalOptions="Center"/>
+                                        <StackLayout Grid.Column="1"
+                                                     Spacing="2"
+                                                     VerticalOptions="Center">
+                                            <Label Text="{Binding MoodLabel}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#1A1A1A"/>
+                                            <Label Text="{Binding DateText}"
+                                                   FontSize="11"
+                                                   TextColor="#AAAAAA"/>
+                                        </StackLayout>
+                                        <Label Grid.Column="2"
+                                               Text="{Binding ScoreText}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="#5BC8D0"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Label x:Name="EmptyEntriesLabel"
+                               Text="No check-ins yet!"
+                               FontSize="13"
+                               TextColor="#AAAAAA"
+                               HorizontalTextAlignment="Center"
+                               IsVisible="False"/>
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

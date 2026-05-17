@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:project"
+             x:Class="project.ProfilePage"
+             Title="ProfilePage"
+             BackgroundColor="#E2DFD2">
+
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ================= HEADER ================= -->
+        <Border Grid.Row="0"
+            StrokeThickness="0"
+            BackgroundColor="White"
+            Padding="15,20"
+            HeightRequest="100">
+
+            <Border.Shadow>
+                <Shadow Brush="#000000"
+                    Opacity="0.2"
+                    Offset="0,4"
+                    Radius="10"/>
+            </Border.Shadow>
+
+            <VerticalStackLayout Spacing="5"
+                                 VerticalOptions="Center">
+
+                <Grid ColumnDefinitions="Auto,*">
+
+                    <!-- Back Button -->
+                    <Label Text="←"
+                       FontSize="22"
+                       VerticalOptions="Center"
+                       TextColor="Black">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!-- Title -->
+                    <Label Grid.Column="1"
+                       Text="Profile and Settings"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"
+                       TextColor="Black"/>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+        <!-- ================= CONTENT ================= -->
+        <ScrollView Grid.Row="1"
+                    VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout Padding="20" Spacing="20" Margin="0,0,0,55">
+                <Border Style="{StaticResource CardStyle}"
+                        Padding="20"
+                        StrokeShape="RoundRectangle 20">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <!-- TOP: Profile Row -->
+                        <HorizontalStackLayout>
+
+                            <!-- Profile -->
+                            <Border WidthRequest="60"
+                    HeightRequest="60"
+                    StrokeShape="RoundRectangle 30"
+                    BackgroundColor="#d9d9d9"
+                                    Stroke="Black">
+
+                                <Label Text="ME"
+                       FontSize="22"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- User Info -->
+                            <VerticalStackLayout Margin="12,0">
+
+                                <Label x:Name="NameLabel"
+                                        Text="Loading name..."
+                                         TextColor="Black"/>
+
+                                <Label x:Name="MemberSinceLabel"
+                                        Text="Member since..."
+                                         FontSize="10"
+                                        TextColor="Black"/>
+
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+
+                        <!-- LINE -->
+                        <Border 
+                            HeightRequest="1"
+                            BackgroundColor="#CCC"
+                            HorizontalOptions="Fill"/>
+
+                        <!-- BOTTOM: Stats -->
+                        <Grid ColumnDefinitions="*,*,*">
+
+                            <VerticalStackLayout Grid.Column="0"
+                         HorizontalOptions="Center">
+                                <Label Text="24"
+                                        FontSize="10"
+                                        
+                                        HorizontalOptions="Center"
+                                       TextColor="#1560BD"/>
+                                <Label Text="Check-ins"
+                                         FontSize="10"
+                                        HorizontalOptions="Center"
+                                       TextColor="Black"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1"
+                         HorizontalOptions="Center">
+                                <Label Text="7"
+                                        FontSize="10"
+                                        
+                                        HorizontalOptions="Center"
+                                       TextColor="#1560BD"/>
+                                <Label Text="Day Streak"
+                                        FontSize="10"
+                                        HorizontalOptions="Center"
+                                       TextColor="Black"/>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="2"
+                         HorizontalOptions="Center">
+                                <Label Text="15"
+                                        FontSize="10"
+                                        
+                                        HorizontalOptions="Center"
+                                       TextColor="#1560BD"/>
+                                <Label Text="Activities"
+                                        FontSize="10"
+                                        HorizontalOptions="Center"
+                                       TextColor="Black"/>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+
+                <Label Text="Preferences"
+                       TextColor="Black"
+                       FontSize="16"/>
+
+                <Border Style="{StaticResource CardStyle}"
+                        Padding="20"
+                        StrokeShape="RoundRectangle 20">
+                    <VerticalStackLayout Spacing="15">
+
+                        <!-- Notifications -->
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+
+                            <!-- Icon -->
+                            <Border WidthRequest="40"
+                HeightRequest="40"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="#A7D3F5">
+
+                                <Label Text="🔔"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+                            </Border>
+
+                            <!-- Text -->
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0">
+                                <Label Text="Notifications"
+                   FontSize="14"
+                   TextColor="Black"/>
+                                <Label Text="Daily Reminders"
+                   FontSize="10"
+                   TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                            <!-- Toggle -->
+                            <Switch Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+
+                        </Grid>
+
+                        <!-- Reminder Card -->
+                        <Border BackgroundColor="#BFD7EA"
+            StrokeShape="RoundRectangle 15"
+            Padding="10">
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Daily Reminders"
+                   FontSize="12"
+                   TextColor="Black"/>
+
+                                <Label Text="⏰ 9:00"
+                   FontSize="11"
+                   TextColor="#1560BD"/>
+
+                                <Label Text="⏰ 21:00"
+                   FontSize="11"
+                   TextColor="#1560BD"/>
+
+                                <Label Text="Note: Browser notification require permission"
+                   FontSize="9"
+                   TextColor="#1560BD"/>
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                        <!-- Dark Mode -->
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+
+                            <Border WidthRequest="40"
+                HeightRequest="40"
+                StrokeShape="RoundRectangle 20"
+                BackgroundColor="#A7D3F5">
+
+                                <Label Text="🌙"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0">
+                                <Label Text="Dark Mode"
+                   FontSize="14"
+                   TextColor="Black"/>
+                                <Label Text="Night Theme"
+                   FontSize="10"
+                   TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                            <Switch Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="Support and Information"
+                        TextColor="Black"
+                        FontSize="16"/>
+
+                <Border Style="{StaticResource CardStyle}"
+        Padding="15"
+        StrokeShape="RoundRectangle 20">
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <!-- Privacy -->
+                        <Grid ColumnDefinitions="Auto,*">
+
+                            <Border WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#A7D3F5">
+
+                                <Label Text="🛡️"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0">
+                                <Label Text="Privacy and Data"
+                       TextColor="Black"/>
+                                <Label Text="Your data is secure"
+                       FontSize="10"
+                       TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <!-- Divider -->
+                        <Border HeightRequest="1" BackgroundColor="#EEE"/>
+
+                        <!-- Help -->
+                        <Grid ColumnDefinitions="Auto,*">
+
+                            <Border WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="#A7D3F5">
+
+                                <Label Text="❓"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                            </Border>
+
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0">
+                                <Label Text="Help and Support"
+                       TextColor="Black"/>
+                                <Label Text="Get help anytime"
+                       FontSize="10"
+                       TextColor="Gray"/>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <Border BackgroundColor="#BFD7EA"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="15">
+
+                    <HorizontalStackLayout Spacing="10">
+
+                        <Label Text="🔒"
+               FontSize="20"/>
+
+                        <VerticalStackLayout>
+                            <Label Text="Your Privacy Matters"
+                   FontSize="12"
+                   TextColor="Black"/>
+
+                            <Label Text="All your emotional data is stored locally and encrypted. We never share your personal information."
+                   FontSize="10"
+                   TextColor="Black"/>
+                        </VerticalStackLayout>
+
+                    </HorizontalStackLayout>
+
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}"
+        Padding="20"
+        StrokeShape="RoundRectangle 20">
+
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="Security"
+               FontSize="16"
+               TextColor="Black"
+                               Margin="20,0,0,0"/>
+
+                        <Entry x:Name="CurrentPasswordEntry"
+               Placeholder="Current Password"
+               IsPassword="True"
+                               FontSize="12"
+               TextColor="Black"/>
+
+                        <Entry x:Name="NewPasswordEntry"
+               Placeholder="New Password"
+               IsPassword="True"
+                               FontSize="12"
+               TextColor="Black"/>
+
+                        <Button Text="Change Password"
+                BackgroundColor="#1560BD"
+                TextColor="White"
+                CornerRadius="10"
+                Clicked="OnChangePasswordClicked"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+                <Button Text="LOG OUT"
+                        TextColor="Red"
+                        BackgroundColor="Transparent"
+                        BorderColor="Red"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        Clicked="OnLogoutClicked"/>
+
+            </VerticalStackLayout>
+
+
+        </ScrollView>
+
+        <components:NavigationBar Grid.Row="1"/>
+
+    </Grid>
+</ContentPage>
